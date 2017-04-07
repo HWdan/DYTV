@@ -7,7 +7,7 @@
 //
 
 import UIKit
-private let kTitleViewH: CGFloat = 40
+let kTitleViewH: CGFloat = 40
 class HomeViewController: UIViewController {
     //MARK: - 懒加载属性
     lazy var pageTitleView: PageTitleView = {[weak self] in
@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
     
     lazy var pageContentView:PageContentView = {[weak self] in
         //内容的frame
-        let contentH = kScreenH - kStausBarH - kNavigationBarH - kTitleViewH - kTabbarH 
+        let contentH = kScreenH - kStausBarH - kNavigationBarH - kTitleViewH - kTabbarH
         let contentFrame = CGRect(x: 0, y: kStausBarH + kNavigationBarH + kTitleViewH, width: kScreenW, height: contentH)
         //所有的子控制器
         var childVcs = [UIViewController]()

@@ -11,13 +11,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR">
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="CollectionHeaderView" customModule="DYTV" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5V-Dg-Lae">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="10"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="0.52239404965753422" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="10" id="oxO-7t-doD"/>
                     </constraints>
@@ -58,6 +58,10 @@
                 <constraint firstAttribute="trailing" secondItem="h5V-Dg-Lae" secondAttribute="trailing" id="oHi-Ix-mgg"/>
                 <constraint firstItem="iVl-Gv-F7L" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="10" id="wPr-5J-o9P"/>
             </constraints>
+            <connections>
+                <outlet property="iconImageView" destination="iVl-Gv-F7L" id="Xau-ft-XhO"/>
+                <outlet property="titleLabel" destination="6Bl-aj-JBZ" id="7ix-Le-Ign"/>
+            </connections>
         </collectionReusableView>
     </objects>
     <resources>
