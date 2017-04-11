@@ -10,7 +10,7 @@ import UIKit
 let kTitleViewH: CGFloat = 40
 class HomeViewController: UIViewController {
     //MARK: - 懒加载属性
-    lazy var pageTitleView: PageTitleView = {[weak self] in
+    fileprivate lazy var pageTitleView: PageTitleView = {[weak self] in
         let titleFrame = CGRect(x: 0, y: kStausBarH + kNavigationBarH, width: kScreenW, height: kTitleViewH)
         let titles = ["推荐", "游戏", "娱乐", "趣玩"]
         let titleView = PageTitleView(frame: titleFrame, titles: titles)
@@ -18,14 +18,16 @@ class HomeViewController: UIViewController {
         return titleView
     }()
     
-    lazy var pageContentView:PageContentView = {[weak self] in
+    fileprivate lazy var pageContentView:PageContentView = {[weak self] in
         //内容的frame
         let contentH = kScreenH - kStausBarH - kNavigationBarH - kTitleViewH - kTabbarH
         let contentFrame = CGRect(x: 0, y: kStausBarH + kNavigationBarH + kTitleViewH, width: kScreenW, height: contentH)
         //所有的子控制器
         var childVcs = [UIViewController]()
         childVcs.append(RecommenViewController())
-        for _ in 0..<3 {
+        childVcs.append(GameViewController())
+        childVcs.append(AmuseViewController())
+        for _ in 0..<1 {
             let vc = UIViewController()
             vc.view.backgroundColor = UIColor(r: CGFloat(arc4random_uniform(255)), g: CGFloat(arc4random_uniform(255)), b: CGFloat(arc4random_uniform(255)))
             childVcs.append(vc)

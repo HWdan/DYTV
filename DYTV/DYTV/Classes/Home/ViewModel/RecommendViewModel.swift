@@ -8,9 +8,8 @@
 
 import UIKit
 
-class RecommendViewModel {
+class RecommendViewModel: BaseViewModel {
     //MARK:- 懒加载
-    lazy var anchorGroups: [AnchorGroup] = [AnchorGroup]()
     lazy var bigDataGroup: AnchorGroup = AnchorGroup()
     lazy var prerryGroup: AnchorGroup = AnchorGroup()
     lazy var cycleModels: [CycleModel] = [CycleModel]()
@@ -41,11 +40,10 @@ extension RecommendViewModel {
         
         //请求最后部分游戏数据
         dGroup.enter()
-        NetworkTools.requestData(.get, URLString: "http://capi.douyucdn.cn/api/v1/getHotCate", parameters: parameters) { (result) in
-            self.resultData(result: result,isHotCate: true, dataGroup: self.prerryGroup)
+        loadAnchorData(URLString: "http://capi.douyucdn.cn/api/v1/getHotCate", parameters: parameters) { 
             dGroup.leave()
         }
-        
+               
         //所有的数据都请求到之后，进行排序
         dGroup.notify(queue: DispatchQueue.main) {
             self.anchorGroups.insert(self.prerryGroup, at: 0)
