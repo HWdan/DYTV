@@ -16,7 +16,7 @@ private let kHeaderViewID = "kHeaderViewID"
 private let kHeaderViewH: CGFloat = 50
 private let kGameViewH: CGFloat = 90
 
-class GameViewController: UIViewController {
+class GameViewController: BaseViewController {
     //MARK:- 懒加载
     fileprivate lazy var gameVM: GameViewModel = GameViewModel()
     fileprivate lazy var topHeaderView: CollectionHeaderView = {
@@ -60,10 +60,12 @@ class GameViewController: UIViewController {
 
 //MARK:- 设置 UI
 extension GameViewController {
-    fileprivate func setupUI() {
+    override func setupUI() {
+        contentView = collectionView
         view.addSubview(collectionView)
         collectionView.addSubview(topHeaderView)
         collectionView.addSubview(gameView)
+        super.setupUI()
     }
 }
 
@@ -75,6 +77,8 @@ extension GameViewController {
             self.collectionView.reloadData()
             //常用游戏(全部游戏的前十条数据)
             self.gameView.groups = Array(self.gameVM.games[0..<10])
+            //数据请求完成，调用
+            self.loadDtaaFinished()
         }
     }
 }

@@ -27,8 +27,6 @@ extension AmuseViewController {
         collectionView.addSubview(menuView)
         //设置内边距处理头部和最后部分显示不全的问题
         collectionView.contentInset = UIEdgeInsets(top: kMenuViewH, left: 0, bottom: kStausBarH + kNavigationBarH + kTitleViewH + kTabbarH, right: 0)
-        
-       
     }
 }
 
@@ -42,6 +40,8 @@ extension AmuseViewController {
             var tempGroups = self.amuseVM.anchorGroups
             tempGroups.removeFirst()
             self.menuView.groups = tempGroups
+            //数据请求完成，调用
+            self.loadDtaaFinished()
         }
     }
 }
